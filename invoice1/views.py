@@ -31,7 +31,7 @@ def CreateInvoice(request):
     # pdb.set_trace()
     number = 'INVcd-' + str(uuid4()).split('-')[1]
     
-    # customer = Customer.objects.get(id=id)
+    
 
     if request.method == 'POST':
         invoice_no = request.POST['invoice_no']
@@ -66,7 +66,7 @@ def CreateInvoice(request):
         invoice_obj.save()
         
         
-        product_obj = Product(product=product,price=price,qty=qty,tax=tax,total=total  )
+        product_obj = Product( invoice_no=invoice_obj, product=product,price=price,qty=qty,tax=tax,total=total  )
        
         product_obj.save()
     context = {
@@ -144,11 +144,12 @@ def edit_invoice(request, id):
 #profile page for this 
 def invoice_profile_page(request,   id):
     invoice= Invoice.objects.get(pk=id)
-    product = Product.objects.get(pk=id)
+    product = Product.objects.filter(invoice_no=invoice)
     context = {
         "user": request.user,
         "contact": "active",
         "invoice": invoice,
+        "product": product,
 
     }
     return render(request, 'invoice_profile.html', context)

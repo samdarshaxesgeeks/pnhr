@@ -19,11 +19,11 @@ SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', cast=bool)
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ALLOWED_HOSTS = [ 'www.pnhrconsulting.com','pnhrconsulting.com', '165.232.188.137']
+#ALLOWED_HOSTS = [ 'www.pnhrconsulting.com','pnhrconsulting.com', '165.232.188.137']
 
 
 
-# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 CRM_APPS = [
     'employees',
@@ -102,7 +102,7 @@ if DEBUG:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'ems111'),
+        'NAME': os.path.join(BASE_DIR, 'emssd232f111'),
         }
     }
 else:

@@ -82,41 +82,27 @@
             </thead>
             <tbody>
         
-              {% for product in invoice.product.all %}
+              {% for items in product %}
               <tr>
-                <td> {{ product.id }}</td>
-                <td>{{product.product}}</td>
+                <td> {{ items.id }}</td>
+                <td>{{items.product}}</td>
 
-                <td>{{product.price}}</td>
+                <td>{{items.price}}</td>
 
-                <td>{{product.qty}}</td>
+                <td>{{items.qty}}</td>
 
                 <td class="text-center"><div class="input-group mb-2 mb-sm-0">
-                   {{product.tax}}
+                   {{items.tax}}
                   <div class="input-group-addon">%</div>
                 </div></td>
 
 
-                <td>  {{product.total}}</td>
+                <td>  {{items.total}}</td>
               </tr>
               {% endfor %}
            
            <tr id='addr1'></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="row clearfix">
-        <div class="col-md-12">
-          <butto id="add_row" class="btn btn-default pull-left">Add Row</butto>
-          <butto id='delete_row' class="pull-right btn btn-default">-</butto>
-        </div>
-      </div>
-      <div class="row clearfix" style="margin-top:20px">
-        <div class="col-md-4"></div> <div class="col-md-4"></div>
-        <div class="pull-right col-md-4">
-          <table class="table table-bordered table-hover" id="tab_logic_total">
-            <tbody>
+           
               <tr>
                 <th class="text-center">Sub Total</th>
                 <td class="text-center"><h4>{{invoice.sub_total}}</h4></td>
@@ -138,21 +124,21 @@
               </tr>
             </tbody>
           </table>
-            <div class="col-sm-6">
+            <div class="d-flex justify-content-end align-items-center">
                 <div class="input-item">
                     <label for="discount-percentage"><b>Amount Deposit :</b></label>
-                    <input type="text" id="discount-percentage" name="amount_deposit" class="form-control"  value={{product.amount_deposit}}>
+                    <input type="text" id="discount-percentage" name="amount_deposit" class="form-control"  value={{invoice.amount_deposit}}>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="d-flex justify-content-end align-items-center">
                 <div class="input-item">
                     <label for="discount-amount"> <b>Due Amount :</b> </label>
-                    <input type="text" id="discount-amount" name="amount_due" class="form-control" readonly="readonly" value={{product.amount_due}}>
+                    <input type="text" id="discount-amount" name="amount_due" class="form-control" readonly="readonly" value={{invoice.amount_due}}>
                 </div>
             </div>
         </div>
           <br> <br>
-           <button type="submit" class="calculate btn btn-primary">calculate</button>
+
       <div class="row mt-4">
         <div class="col-sm-9">
             <h4><b>Declaration</b></h4>

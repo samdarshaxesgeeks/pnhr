@@ -20,8 +20,8 @@
                     <th scope="col">Total</th>
                     <th scope="col">Deposit</th>
                     <th scope="col">Due</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">profile</th>
+                  
+                    <th scope="col">View</th>
 
    
 
@@ -38,9 +38,8 @@
                     <td sc ope="col">{{x.grand_total}}</td>
                     <td scope="col">{{x.amount_deposit}}</td>
                     <td scope="col">{{x.amount_due}}</td>
-                    <td scope="col"><a href="{% url 'invoice:edit_invoice' x.id %}">Edit</a></td>
-
-                    <td scope="col"><a href="{% url 'invoice:invoice_profile_page' x.id %}">profile</a></td>
+                   
+                    <td scope="col"><a href="{% url 'invoice:invoice_profile_page' x.id %}">View</a></td>
 
                 </tr>
 
