@@ -22,8 +22,7 @@ urlpatterns = [
     path('crm/', include('crm_app.urls')),
     path('contact/', include('contacts.urls')),
     # path('attendance/', include('attendance.urls')),
-]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
 
 handler404 = 'employees.views.error_404_view'

@@ -28,3 +28,10 @@ def get_ugx_currency():
         return Currency.objects.get(code="UGX")
     except Currency.DoesNotExist:
         return None
+
+
+def get_aed_currency():
+    try:
+        return Currency.objects.get(code="AED")
+    except Currency.DoesNotExist:
+        return None

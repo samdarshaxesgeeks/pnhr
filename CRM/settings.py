@@ -102,7 +102,7 @@ if DEBUG:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'emssd232f111'),
+        'NAME': os.path.join(BASE_DIR, 'emssd23211'),
         }
     }
 else:
@@ -168,8 +168,8 @@ EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'pics')
+MEDIA_URL = 'pics/'
 
 CRONJOBS = [
     ('0 0 * * *', 'overtime.cron.expire_overtime_applications'),  # Every day at Midnight

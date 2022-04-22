@@ -1089,7 +1089,7 @@ def add_statutory_deduction(request):
                 local_service_tax=local_service_tax
             )
             messages.success(request, "Successfully added statutory deduction")
-            return HttpResponseRedirect(reverse(add_more_details_page, args=[employee_id]))
+            return redirect('employee:employees_page')
 
         except IntegrityError:
             messages.error(request, "Integrity problems while adding deduction")
@@ -1117,15 +1117,9 @@ def add_deduction(request):
         employee = Employee.objects.get(pk=employee_id)
 
         try:
-            deduction = Deduction.objects.create(
-                employee=employee,
-                sacco=sacco,
-                damage=damage,
-                salary_advance=salary_advance,
-                police_fine=police_fine
-            )
+          
             messages.success(request, "Successfully added sacco deduction")
-            return HttpResponseRedirect(reverse(add_more_details_page, args=[employee_id]))
+            return redirect('employee:employees_page')
 
         except IntegrityError:
             messages.error(request, "Integrity problems while adding deduction")

@@ -4,11 +4,19 @@ from django_countries.fields import CountryField
 
 from .models import Contact
 
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+
 
 class ContactForm(forms.ModelForm):
     class Meta:
       model=Contact
       fields="__all__"
+
+      widgets = {
+            'date_of_birth': DateInput()
+        }
 
       # widgets = {
 

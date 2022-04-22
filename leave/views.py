@@ -49,7 +49,7 @@ def leave_dashboard_page(request):
     supervisor_applications, hod_applications, hr_applications = [], [], []
     if user.is_supervisor:
         supervisor_applications = LeaveApplication.objects.filter(supervisor_status="Pending")
-                                    # team=user.solitonuser.employee.organisationdetail.team)
+                                    #    team=user.solitonuser.employee.organisationdetail.team)
         role = "is_supervisor"
         if supervisor_applications:
             is_applications_available = True
@@ -211,7 +211,7 @@ def apply_leave(request):
         leave_record = get_leave_record(employee, current_year)
         leave_type = get_leave_type(request.POST["ltype"])
         start_date = request.POST["s_date"]
-        end_date = request.POST["e_date"]
+        end_date = request.POST["   e_date"]
         days_applied = int(request.POST["no_days"])
         leave_type_days = leave_type.leave_days
         curr_balance = 0
