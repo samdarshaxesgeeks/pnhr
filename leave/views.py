@@ -212,8 +212,11 @@ def apply_leave(request):
         leave_type = get_leave_type(request.POST["ltype"])
         start_date = request.POST["s_date"]
         end_date = request.POST["e_date"]
-        days_applied = request.POST["no_days"]
+        days_applied = int(request.POST["no_days"])
+        print(days_applied)
+
         leave_type_days = leave_type.leave_days
+
         curr_balance = 0
         if days_applied <= leave_type_days:
             new_balance = 0

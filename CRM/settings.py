@@ -92,26 +92,33 @@ WSGI_APPLICATION = 'CRM.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-if DEBUG:
-
-    DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'emssa'),
+        'NAME': os.path.join(BASE_DIR, 'emssd23211'),
         }
     }
-else:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'crm',
-        'USER': 'myprojectuser',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+
+	
+# if DEBUG:
+
+#     DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'emssa'),
+#         }
+#     }
+# else:
+#     DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'crm',
+#         'USER': 'myprojectuser',
+#         'PASSWORD': 'password',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
