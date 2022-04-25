@@ -211,8 +211,8 @@ def apply_leave(request):
         leave_record = get_leave_record(employee, current_year)
         leave_type = get_leave_type(request.POST["ltype"])
         start_date = request.POST["s_date"]
-        end_date = request.POST["   e_date"]
-        days_applied = int(request.POST["no_days"])
+        end_date = request.POST["e_date"]
+        days_applied = request.POST["no_days"]
         leave_type_days = leave_type.leave_days
         curr_balance = 0
         if days_applied <= leave_type_days:

@@ -16,16 +16,12 @@ if ENVIRONMENT == "heroku":
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_DIR=os.path.join(BASE_DIR,'static')
 SECRET_KEY = config('SECRET_KEY')
-# DEBUG = config('DEBUG', cast=bool)
-DEBUG = False
+DEBUG = config('DEBUG', cast=bool)
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ALLOWED_HOSTS = [ 'www.pnhrconsulting.com','pnhrconsulting.com', '165.232.188.137']
+# ALLOWED_HOSTS = [ 'www.pnhrconsulting.com','pnhrconsulting.com', '164.92.68.210']
 
-
-
-
-# ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 CRM_APPS = [
     'employees',
@@ -43,8 +39,6 @@ CRM_APPS = [
     'invoice1',
     'crm_app',
     'contacts',
-    # 'cont',
-    'attendence',
     # 'attendance',
 
 ]
@@ -99,33 +93,27 @@ WSGI_APPLICATION = 'CRM.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
+if DEBUG:
+
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'emssd23211'),
         }
     }
 
-
-# if DEBUG:
-
-#     DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'emssd23211'),
-#         }
-#     }
-# else:
-#     DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'crm',
-#         'USER': 'myprojectuser111',
-#         'PASSWORD': 'password',
-#         'HOST': 'localhost',
-#         'PORT': '',
-#     }
-# }
+	
+else:
+    DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'crm',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -178,8 +166,8 @@ EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'pics')
-MEDIA_URL = 'pics/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CRONJOBS = [
     ('0 0 * * *', 'overtime.cron.expire_overtime_applications'),  # Every day at Midnight
