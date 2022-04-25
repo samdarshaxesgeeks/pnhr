@@ -117,11 +117,12 @@ def payroll_record_page(request, id):
         "payroll_record": payroll_record,
         "total_nssf_contribution": get_total_nssf(ugx_payslips),
         "total_paye": get_total_paye(ugx_payslips),
-            "total_gross_pay": get_total_gross_pay(ugx_payslips),
-            "total_basic_pay": get_total_basic_pay(ugx_payslips),
+        "total_gross_pay": get_total_gross_pay(ugx_payslips),
+        "total_basic_pay": get_total_basic_pay(ugx_payslips),
         "total_net_pay": get_total_net_pay(ugx_payslips),
     }
     return render(request, 'payroll/payroll_record.html', context)
+
 
 
 @hr_required
