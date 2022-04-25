@@ -21,7 +21,7 @@ DEBUG = False
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ALLOWED_HOSTS = [ 'www.pnhrconsulting.com','pnhrconsulting.com', '165.232.188.137', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [ 'www.pnhrconsulting.com','pnhrconsulting.com', '165.232.153.211', '127.0.0.1', 'localhost']
 
 
 
@@ -165,11 +165,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
 
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'static'),
