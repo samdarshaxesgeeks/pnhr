@@ -98,11 +98,9 @@ if DEBUG:
     DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'emssd23211'),
+        'NAME': os.path.join(BASE_DIR, 'emssa'),
         }
     }
-
-	
 else:
     DATABASES = {
     'default': {

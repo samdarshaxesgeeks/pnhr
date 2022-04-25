@@ -124,6 +124,7 @@ def payroll_record_page(request, id):
     return render(request, 'payroll/payroll_record.html', context)
 
 
+
 @hr_required
 @log_activity
 def payroll_record_page_usd(request, id):
