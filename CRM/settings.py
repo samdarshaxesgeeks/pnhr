@@ -16,10 +16,12 @@ if ENVIRONMENT == "heroku":
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_DIR=os.path.join(BASE_DIR,'static')
 SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', cast=bool)
+DEBUG = False
+# DEBUG = config('DEBUG', cast=bool)
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ALLOWED_HOSTS = [ 'www.pnhrconsulting.com','pnhrconsulting.com', '165.232.188.137']
+ALLOWED_HOSTS = [ 'www.pnhrconsulting.com','pnhrconsulting.com', '165.232.188.137', '127.0.0.1', 'localhost']
 
 
 
@@ -97,25 +99,32 @@ WSGI_APPLICATION = 'CRM.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-if DEBUG:
-
-    DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'emssd23211'),
         }
     }
-else:
-    DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'crm',
-        'USER': 'myprojectuser111',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
+
+# if DEBUG:
+
+#     DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'emssd23211'),
+#         }
+#     }
+# else:
+#     DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'crm',
+#         'USER': 'myprojectuser111',
+#         'PASSWORD': 'password',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
