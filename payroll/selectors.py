@@ -1,7 +1,7 @@
 from django.core.exceptions import MultipleObjectsReturned
 import datetime
 from payroll.models import Payslip, PayrollRecord, CSV
-from settings.selectors import get_ugx_currency, get_usd_currency, get_aed_currency
+from settings.selectors import get_ugx_currency, get_usd_currency
 
 
 def get_payroll_by_id(payroll_id):
@@ -26,12 +26,6 @@ def get_unarchived_payroll_records():
 def get_usd_payslips(payroll_record):
     usd_currency = get_usd_currency()
     return Payslip.objects.filter(payroll_record=payroll_record, currency=usd_currency)
-
-
-def get_aed_payslips(payroll_record):
-    aed_currency = get_aed_currency()
-    return Payslip.objects.filter(payroll_record=payroll_record, currency=aed_currency)
-
 
 
 def get_payroll_record(id):

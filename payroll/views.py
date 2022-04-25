@@ -13,10 +13,10 @@ from employees.selectors import get_employees_paid_in_usd, get_employees_paid_in
 from ems_admin.decorators import log_activity
 from ems_auth.decorators import hr_required
 from ems_auth.models import SolitonUser
-from payroll.selectors import get_payroll_record_by_id, get_ugx_payslips, get_usd_payslips, get_aed_currency, \
+from payroll.selectors import get_payroll_record_by_id, get_ugx_payslips, get_usd_payslips, \
     get_payslips, get_unarchived_payroll_records, get_activated_csv
 from payroll.services import create_payslip_list_service, update_employee_financial_details, delete_all_csv_files
-from settings.selectors import get_usd_currency, get_aed_currency
+from settings.selectors import get_usd_currency
 from .forms.csv_form import CSVForm
 
 from .models import PayrollRecord, Payslip, CSV
@@ -135,10 +135,9 @@ def payroll_record_page_usd(request, id):
         month = payroll_record.month
         year = payroll_record.year
         # Get all the associated payslip objects
-        usd_currency = get_aed_currency()
+        usd_currency = get_usd_currency()
         usd_currency_cost = float(usd_currency.cost)
-         
-        usd_payslips = get_aed_currency(payroll_record)
+        usd_payslips = get_usd_payslips(payroll_record)
         # Get all employees
         total_paye = get_total_paye(usd_payslips)
         total_nssf_contribution = get_total_nssf(usd_payslips)
@@ -318,8 +317,6 @@ def generate_payroll_usd_pdf(request, id):
         year = payroll_record.year
         # Get all the associated payslip objects
         usd_currency = get_usd_currency()
-        aed_currency = get_aed_currency()
-
         usd_currency_cost = float(usd_currency.cost)
         usd_payslips = get_usd_payslips(payroll_record)
         # Get all employees
@@ -331,17 +328,17 @@ def generate_payroll_usd_pdf(request, id):
             "payroll_page": "active",
             "month": month,
             "year": year,
-            "usd_payslips": aed_currency,
+            "usd_payslips": usd_payslips,
             "payroll_record": payroll_record,
             "total_nssf_contribution": total_nssf_contribution,
             "total_paye": total_paye,
-            "total_sacco": get_total_sacco(aed_currency),
-            "total_gross_pay": get_total_gross_pay(aed_currency),
-            "total_basic_pay": get_total_basic_pay(aed_currency),
-            "total_net_pay": get_total_net_pay(aed_currency),
+            "total_sacco": get_total_sacco(usd_payslips),
+            "total_gross_pay": get_total_gross_pay(usd_payslips),
+            "total_basic_pay": get_total_basic_pay(usd_payslips),
+            "total_net_pay": get_total_net_pay(usd_payslips),
             "total_paye_ugx": total_paye_ugx,
-            "total_lst_deduction": get_total_lst_deduction(aed_currency),
-            "total_lst_allowance": get_total_lst_allowance(aed_currency),
+            "total_lst_deduction": get_total_lst_deduction(usd_payslips),
+            "total_lst_allowance": get_total_lst_allowance(usd_payslips),
             "total_nssf_contribution_ugx": total_nssf_contribution * usd_currency_cost,
             "base_dir": BASE_DIR,
 
